@@ -1,5 +1,5 @@
 <?php 
-include "models/Category.php";
+include_once "models/Category.php";
 switch ($action) {
     case "category":
         $categories = getCategories();
