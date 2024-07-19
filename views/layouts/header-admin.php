@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION['login']) or $_SESSION['login']['role_id']!=1){
+  header("Location: $baseurl/login");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +33,11 @@
           <a class="nav-link" href="javascript:void(0)">Link</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
+      <form action="<?=$baseurl?>/logout" method="POST" class="d-flex" style="color: white">
+        <?php if(isset($_SESSION['login'])){?>
+            Chào <?php echo $_SESSION['login']['username'] ?> |
+           <button type="submit">Đăng xuất</button>
+        <?php }?>
       </form>
     </div>
   </div>

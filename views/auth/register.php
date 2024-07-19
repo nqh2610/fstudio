@@ -22,26 +22,33 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Đăng kí</h2>
-                        <form method="POST" class="register-form" id="register-form">
+                        <form method="POST" action="postregister" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
+                                <input type="text" name="name" id="name" placeholder="Your User Name" value="<?= $_POST['name'] ?? ""?>"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                                <input type="email" name="email" id="email" placeholder="Your Email" value="<?= $_POST['email'] ?? ""?>"/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                <input type="password" name="pass" id="pass" placeholder="Password" value="<?= $_POST['pass'] ?? ""?>"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
+                            </div>                            
                             <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            <?php if(isset($errors) && count($errors)>0){?>
+                            <ul>
+                                <?php foreach($errors as $error){?>
+                                    <li style="color:red">                                      
+                                            <?php echo $error?>                                       
+                                    </li>
+                                <?php }?>
+                            </ul>  
+                            <?php }?>                            
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>

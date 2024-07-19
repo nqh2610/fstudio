@@ -41,10 +41,24 @@
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                            <?php if(isset($_SESSION['login'])){?>
+                                Chào <?php echo $_SESSION['login']['username'] ?>
+                            <?php }else{?>
+                                My Account
+                            <?php }?>
+                        </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+                            <?php if(isset($_SESSION['login'])){?>
+                                <button class="dropdown-item" type="button">Thông tin cá nhân</button>
+                                <form action="<?=$baseurl?>/logout" method="POST">
+                                    <button class="dropdown-item" type="submit">Đăng xuất</button>
+                                </form>                               
+                            <?php } else {?>
+                                <a class="dropdown-item" type="button" href="<?php echo $baseurl?>/register">Đăng kí</a>
+                                <a class="dropdown-item" type="button" href="<?php echo $baseurl?>/login">Đăng nhập</a>
+                            <?php }?>
+                           
                         </div>
                     </div>
                     <div class="btn-group mx-2">
