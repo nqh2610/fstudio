@@ -167,7 +167,7 @@
                             <a href="cart" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
-                                    <?php if(isset($_SESSION['cart'])) echo count($_SESSION['cart']);?>
+                                    <?php if(isset($_SESSION['cart'])){echo count($_SESSION['cart']);} else{echo 0;} ?>
                                 </span>
                             </a>
                         </div>
