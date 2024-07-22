@@ -24,8 +24,13 @@ switch ($action) {
         }
         include "views/auth/login.php";
         if($user && count($errors)==0){
-            $_SESSION['login'] = $user;
-            header("Location: $baseurl");
+            $_SESSION['login'] = $user; 
+            if(isset($_SESSION['redirectto'])){
+                header("Location: $_SESSION[redirectto]");
+                unset($_SESSION['redirectto']);
+            }else {
+                header("Location: $baseurl");
+            }   
         }
         break;
     case 'logout':

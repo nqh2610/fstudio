@@ -1,5 +1,6 @@
 <?php
 if(!isset($_SESSION['login']) or $_SESSION['login']['role_id']!=1){
+  $_SESSION['redirectto'] = $_SERVER['REQUEST_URI'];
   header("Location: $baseurl/login");
 }
 ?>
